@@ -37,28 +37,33 @@
 
 //  return isAnagram;
 //}
+//function anagrams(stringA, stringB) {
+//  const aCharMap = buildCharMap(stringA);
+//  const bCharMap = buildCharMap(stringB);
+
+//  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+//    return false;
+//  }
+//  for (const char in aCharMap) {
+//    if (aCharMap[char] !== bCharMap[char]) return false;
+//  }
+//  return true;
+//}
+
+//function buildCharMap(string) {
+//  const charMap = {};
+//  for (const char of string.replace(/[^\w]/g, "").toLowerCase()) {
+//    charMap[char] = charMap[char] + 1 || 1;
+//  }
+//  return charMap;
+//}
+
 function anagrams(stringA, stringB) {
-  const aCharMap = buildCharMap(stringA);
-  const bCharMap = buildCharMap(stringB);
-
-  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
-    return false;
-  }
-  for (const char in aCharMap) {
-    if (aCharMap[char] !== bCharMap[char]) return false;
-  }
-  return true;
+  return cleanString(stringA) === cleanString(stringB);
 }
 
-function buildCharMap(string) {
-  const charMap = {};
-  for (const char of string.replace(/[^\w]/g, "").toLowerCase()) {
-    charMap[char] = charMap[char] + 1 || 1;
-  }
-  return charMap;
+function cleanString(str) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
 }
-
-//anagrams("rail safety", "fairy tales");
-anagrams("A tree, a life, a bench", "A tree, a fence, a yard");
 
 module.exports = anagrams;
