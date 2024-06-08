@@ -8,34 +8,54 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
+//function anagrams(stringA, stringB) {
+//  function createMap(string) {
+//    let map = {};
+//    for (const char of string) {
+//      if (!map[char]) {
+//        map[char] = 1;
+//      } else {
+//        map[char]++;
+//      }
+//    }
+//    return map;
+//  }
+//  function processStr(str) {
+//    return str.replace(/[^\w]/g, "").toLowerCase();
+//  }
+
+//  const stringAMap = createMap(processStr(stringA));
+//  const stringBMap = createMap(processStr(stringB));
+
+//  let isAnagram = true;
+
+//  if (Object.keys(stringAMap).length !== Object.keys(stringBMap).length)
+//    return false;
+//  for (const char in stringAMap) {
+//    if (stringAMap[char] !== stringBMap[char]) isAnagram = !isAnagram;
+//  }
+
+//  return isAnagram;
+//}
 function anagrams(stringA, stringB) {
-  function createMap(string) {
-    let map = {};
-    for (const char of string) {
-      if (!map[char]) {
-        map[char] = 1;
-      } else {
-        map[char]++;
-      }
-    }
-    return map;
-  }
-  function processStr(str) {
-    return str.replace(/[^\w]/g, "").toLowerCase();
-  }
+  const aCharMap = buildCharMap(stringA);
+  const bCharMap = buildCharMap(stringB);
 
-  const stringAMap = createMap(processStr(stringA));
-  const stringBMap = createMap(processStr(stringB));
-
-  let isAnagram = true;
-
-  if (Object.keys(stringAMap).length !== Object.keys(stringBMap).length)
+  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
     return false;
-  for (const char in stringAMap) {
-    if (stringAMap[char] !== stringBMap[char]) isAnagram = !isAnagram;
   }
+  for (const char in aCharMap) {
+    if (aCharMap[char] !== bCharMap[char]) return false;
+  }
+  return true;
+}
 
-  return isAnagram;
+function buildCharMap(string) {
+  const charMap = {};
+  for (const char of string.replace(/[^\w]/g, "").toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+  return charMap;
 }
 
 //anagrams("rail safety", "fairy tales");
