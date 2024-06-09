@@ -17,26 +17,40 @@
 //       '### '
 //       '####'
 
-function steps(n) {
-  let index = 1;
-  while (index <= n) {
-    const steps = index;
-    const spaces = n - index;
-    const logger = createLogger(steps, spaces);
-    console.log(logger);
-    index++;
-  }
-}
+//function steps(n) {
+//  let index = 1;
+//  while (index <= n) {
+//    const steps = index;
+//    const spaces = n - index;
+//    const logger = createLogger(steps, spaces);
+//    console.log(logger);
+//    index++;
+//  }
+//}
 
-function createLogger(steps, spaces) {
-  let logger = "";
-  for (let i = 0; i < steps; i++) {
-    logger += "#";
+//function createLogger(steps, spaces) {
+//  let logger = "";
+//  for (let i = 0; i < steps; i++) {
+//    logger += "#";
+//  }
+//  for (let j = 0; j < spaces; j++) {
+//    logger += " ";
+//  }
+//  return logger;
+//}
+
+function steps(n) {
+  for (let row = 0; row < n; row++) {
+    let stair = "";
+    for (let column = 0; column < n; column++) {
+      if (column <= row) {
+        stair += "#";
+      } else {
+        stair += " ";
+      }
+    }
+    console.log(stair);
   }
-  for (let j = 0; j < spaces; j++) {
-    logger += " ";
-  }
-  return logger;
 }
 
 module.exports = steps;
