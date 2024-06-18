@@ -8,18 +8,30 @@
 // Example:
 //   fib(4) === 3
 
+//function fib(n) {
+//  const sequence = [0];
+//  for (let i = 0; i < n; i++) {
+//    if (i === 0) {
+//      sequence.push(1);
+//    } else {
+//      const last =
+//        sequence[sequence.length - 1] + sequence[sequence.length - 2];
+//      sequence.push(last);
+//    }
+//  }
+//  return sequence[sequence.length - 1];
+//}
 function fib(n) {
-  const sequence = [0];
-  for (let i = 0; i < n; i++) {
-    if (i === 0) {
-      sequence.push(1);
-    } else {
-      const last =
-        sequence[sequence.length - 1] + sequence[sequence.length - 2];
-      sequence.push(last);
-    }
+  const result = [0, 1];
+
+  for (let i = 2; i <= n; i++) {
+    const a = result[i - 1];
+    const b = result[i - 2];
+
+    result.push(a + b);
   }
-  return sequence[sequence.length - 1];
+
+  return result[n];
 }
 
 module.exports = fib;
