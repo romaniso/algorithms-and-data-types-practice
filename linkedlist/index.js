@@ -18,13 +18,12 @@ class LinkedList {
   }
   size() {
     let counter = 0;
-    function count(node) {
-      if (node instanceof Node) {
-        counter++;
-        count(node.next);
-      }
+    let node = this.head;
+
+    while (node) {
+      counter++;
+      node = node.next;
     }
-    count(this.head);
     return counter;
   }
 }
