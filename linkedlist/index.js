@@ -30,12 +30,19 @@ class LinkedList {
     return this.head;
   }
   getLast() {
+    if (!this.head) {
+      return null;
+    }
     let node = this.head;
-    if (!node) return null;
     while (node) {
-      if (node.next === null) return node;
+      if (node.next === null) {
+        return node;
+      }
       node = node.next;
     }
+  }
+  clear() {
+    this.head = null;
   }
 }
 
