@@ -14,8 +14,18 @@ class LinkedList {
     this.head = null;
   }
   insertFirst(data) {
-    const node = new Node(data, this.head);
-    this.head = node;
+    this.head = new Node(data, this.head);
+  }
+  size() {
+    let counter = 0;
+    function count(node) {
+      if (node instanceof Node) {
+        counter++;
+        count(node.next);
+      }
+    }
+    count(this.head);
+    return counter;
   }
 }
 
