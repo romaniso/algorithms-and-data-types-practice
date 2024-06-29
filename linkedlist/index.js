@@ -91,24 +91,13 @@ class LinkedList {
       return;
     }
     if (index === 0) {
-      return this.removeFirst();
+      return (this.head = this.head.next);
     }
-    if (index === this.size() - 1) {
-      return this.removeLast();
+    const previous = this.getAt(index - 1);
+    if (!previous || !previous.next) {
+      return;
     }
-    let counter = 1;
-    let node = this.head.next;
-    let prev = this.head;
-
-    while (node) {
-      if (index === counter) {
-        return (prev.next = node.next);
-      }
-      prev = node;
-      node = node.next;
-      prev = node;
-      counter++;
-    }
+    previous.next = previous.next.next;
   }
 }
 
