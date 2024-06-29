@@ -100,16 +100,17 @@ class LinkedList {
     previous.next = previous.next.next;
   }
   insertAt(data, index) {
-    if (!this.head || index === 0) {
-      this.insertFirst(data);
+    if (!this.head) {
+      this.head = new Node(data);
       return;
     }
-    const previous = this.getAt(index - 1);
-    if (!previous) {
-      this.insertLast(data);
+    if (index === 0) {
+      this.head = new Node(data, this.head);
       return;
     }
-    previous.next = new Node(data, previous.next);
+    const previous = this.getAt(index - 1) || this.getLast();
+    const node = new Node(data, previous.next);
+    previous.next = node;
   }
 }
 
