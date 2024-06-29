@@ -74,15 +74,17 @@ class LinkedList {
       this.head = new Node(data);
     }
   }
-  getAt(integer) {
-    if (!this.head) return null;
+  getAt(index) {
     let counter = 0;
     let node = this.head;
-    while (counter !== integer && node.next) {
-      node = node.next;
+    while (node) {
+      if (counter === index) {
+        return node;
+      }
       counter++;
+      node = node.next;
     }
-    return node;
+    return null;
   }
 }
 
