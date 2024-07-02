@@ -23,6 +23,23 @@ class Node {
   }
 }
 
-class Tree {}
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+  traverseBF(fn) {
+    const arr = [this.root];
+
+    while (arr.length) {
+      const node = arr.shift();
+      if (node.children) {
+        for (const child of node.children) {
+          arr.push(child);
+        }
+      }
+      fn(node);
+    }
+  }
+}
 
 module.exports = { Tree, Node };
