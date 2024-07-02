@@ -32,11 +32,8 @@ class Tree {
 
     while (arr.length) {
       const node = arr.shift();
-      if (node.children) {
-        for (const child of node.children) {
-          arr.push(child);
-        }
-      }
+
+      arr.push(...node.children);
       fn(node);
     }
   }
