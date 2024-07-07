@@ -47,8 +47,7 @@ function merge(left, right) {
     }
   }
 
-  results.push(left.length ? left.shift() : right.shift());
-  return results;
+  return [...results, ...left, ...right];
 }
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
