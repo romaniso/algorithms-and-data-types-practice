@@ -24,10 +24,10 @@ function selectionSort(arr) {
         indexOfMin = j;
       }
     }
-    if (i !== indexOfMin) {
-      const greater = arr[i];
-      arr[i] = arr[indexOfMin];
-      arr[indexOfMin] = greater;
+    if (indexOfMin !== i) {
+      const lesser = arr[indexOfMin];
+      arr[indexOfMin] = arr[i];
+      arr[i] = lesser;
     }
   }
 
