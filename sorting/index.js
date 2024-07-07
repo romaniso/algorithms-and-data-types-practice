@@ -3,11 +3,12 @@
 
 function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - i - 1; j++) {
+    for (let j = 0; j < arr.length - i; j++) {
+      const current = arr[j];
+      const next = arr[j + 1];
       if (current > next) {
-        const lesser = arr[j + 1];
-        arr[j + 1] = arr[j];
-        arr[j] = lesser;
+        arr[j] = next;
+        arr[j + 1] = current;
       }
     }
   }
@@ -15,7 +16,23 @@ function bubbleSort(arr) {
   return arr;
 }
 
-function selectionSort(arr) {}
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let indexOfMin = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[indexOfMin]) {
+        indexOfMin = j;
+      }
+    }
+    if (i !== indexOfMin) {
+      const greater = arr[i];
+      arr[i] = arr[indexOfMin];
+      arr[indexOfMin] = greater;
+    }
+  }
+
+  return arr;
+}
 
 function mergeSort(arr) {}
 
