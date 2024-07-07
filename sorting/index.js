@@ -36,6 +36,19 @@ function selectionSort(arr) {
 
 function mergeSort(arr) {}
 
-function merge(left, right) {}
+function merge(left, right) {
+  const results = [];
+
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      results.push(left.shift());
+    } else {
+      results.push(right.shift());
+    }
+  }
+
+  results.push(left.length ? left.shift() : right.shift());
+  return results;
+}
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
